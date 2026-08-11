@@ -17,9 +17,9 @@
             <form novalidate (submit)="onSubmit($event)">
                 <div class="form-control pb-4">
                     <label for="email">Email</label>
-                    <input type="text" id="email" [formField]="loginForm.email">
+                    <input type="text" id="email" [formField]="loginForm.email" placeholder="Enter your email" appFormControl [hasError]="loginForm.email().invalid() && loginForm.email().touched()">
                     @if(loginForm.email().invalid() && loginForm.email().touched()){
-                        <div class="text-red-600 pl-4 pt-1 font-semibold">
+                        <div class="text-[#C30000] pl-4 pt-1 font-semibold">
                             @for(error of loginForm.email().errors(); track error.kind){
                                 <span>{{ error.message }}</span>
                             }
@@ -28,9 +28,9 @@
                 </div>
                 <div class="form-control pb-4">
                     <label for="password">Password</label>
-                    <input type="password" id="password" [formField]="loginForm.password">
+                    <input type="password" id="password" [formField]="loginForm.password" placeholder="Enter your password" appFormControl [hasError]="loginForm.password().invalid() && loginForm.password().touched()">
                     @if(loginForm.password().invalid() && loginForm.password().touched()){
-                        <div class="text-red-600 pl-4 pt-1 font-semibold">
+                        <div class="text-[#C30000] pl-4 pt-1 font-semibold">
                             @for (error of loginForm.password().errors(); track error.kind) {
                                 <span>{{ error.message }}</span>
                             }

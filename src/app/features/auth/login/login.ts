@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { form, FormField, required, submit } from '@angular/forms/signals';
+import { email, form, FormField, required, submit } from '@angular/forms/signals';
+import { FormControl } from '@core/directives/form-control';
 import { loginData } from '@core/models/login-data';
 
 @Component({
   selector: 'app-login',
-  imports: [ FormField ],
+  imports: [ FormField, FormControl ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
@@ -14,10 +15,10 @@ export class Login {
     password: ''
   });
 
-  loginForm = form(this.loginModel, (schemaPath) => {
-    required(schemaPath.email, { message: 'Email is required'});
-    required(schemaPath.email, { message: 'Enter a valid email address' })
-    required(schemaPath.password, { message: 'Password is required' });
+  loginForm = form(this.loginModel, (fieldPath) => {
+    required(fieldPath.email, { message: 'Email is required'});
+    email(fieldPath.email, { message: 'Enter a valid email address' })
+    required(fieldPath.password, { message: 'Password is required' });
   });
 
   onSubmit(event: Event){
