@@ -1,11 +1,11 @@
 import { Component, signal } from '@angular/core';
 import { email, form, FormField, required, submit } from '@angular/forms/signals';
-import { FormControl } from '@core/directives/form-control';
+import { StatusControl } from '@core/directives/status-control';
 import { loginData } from '@core/models/login-data';
 
 @Component({
   selector: 'app-login',
-  imports: [ FormField, FormControl ],
+  imports: [ FormField, StatusControl ],
   templateUrl: './login.html',
   styleUrl: './login.css',
 })
