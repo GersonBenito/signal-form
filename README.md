@@ -1,3 +1,61 @@
+# signal-form
+
+Lightweight Angular starter project with small form components and auth features.
+
+## Overview
+
+`signal-form` is an Angular app demonstrating small reusable form components (`input`, `checkbox`, `button`) and a minimal auth feature set (login, register). It includes server and client entry points so it can be run in typical development setups and supports testing for components.
+
+## What's Included
+
+- **Core components:** `input`, `checkbox`, `button` (under `src/app/components`).
+- **Features:** `auth` (login, register) and `not-found` route.
+- **Core utilities:** app configuration, routes, and small helper functions (under `src/app/core`).
+- **Server entry points:** `main.server.ts`, `server.ts` for server-side bootstrapping.
+- **Environments:** development and production environment files (`src/environments`).
+
+## Screenshot
+
+![Project placeholder image](public/images/1.png)
+![Project placeholder image](public/images/2.png)
+![Project placeholder image](public/images/3.png)
+![Project placeholder image](public/images/4.png)
+![Project placeholder image](public/images/5.png)
+
+## Project Structure (top-level)
+
+- `src/` — application source
+  - `app/` — app modules, components, features
+  - `main.ts` — client bootstrap
+  - `main.server.ts` — server bootstrap
+- `public/` — static assets
+- `angular.json`, `package.json`, `tsconfig.json` — build and tooling
+
+## Scripts
+
+- `npm start` — start the development server (see `package.json` scripts).
+- `npm test` — run tests.
+
+Run locally:
+
+```bash
+npm install
+npm start
+```
+
+Run tests:
+
+```bash
+npm test
+```
+
+## Contributing
+
+Contributions welcome. Open an issue or submit a pull request with a clear description and tests if applicable.
+
+## License
+
+Specify a license in `package.json` or add a `LICENSE` file.
 # SignalForm
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.8.
