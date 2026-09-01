@@ -14,11 +14,13 @@ export class StatusControl {
 
   private readonly inputElement: Signal<HTMLInputElement> = computed(() => this.elementRef.nativeElement);
   protected readonly ariaInvalid: Signal<string | null> = computed(() => this.hasError() ? 'true' : null);
+  private readonly isDisabled: Signal<boolean> = computed(() => this.inputElement().disabled);
 
   private readonly isFocus = signal<boolean>(false);
 
   constructor(){
     effect(() => {
+      // console.log('input -->', this.inputElement().closest('app-input')?.parentElement?.parentElement?.classList.contains('is-invalid'));
       this.applyOutline(this.inputElement());
     });
   }
@@ -40,6 +42,9 @@ export class StatusControl {
 
   @HostListener('keyup', ['$event'])
   onKeyUp(event: KeyboardEvent): void{
+    if(this.isDisabled()){
+      return;
+    }
     if(event.key.toUpperCase() === 'TAB'){
       this.removeOutlineStyle(this.inputElement());
       this.renderer.setStyle(this.inputElement(), 'outline', '4px solid var(--secondary)');
@@ -48,6 +53,9 @@ export class StatusControl {
 
   @HostListener('mouseenter')
   onMouseEnter(){
+    if(this.isDisabled()){
+      return;
+    }
     if(!this.isFocus()){
       this.applyOutline(this.inputElement(), 'var(--gray-primary)');
     }
@@ -67,7 +75,7 @@ export class StatusControl {
   applyOutline(input: HTMLInputElement, color = 'var(--gray-secondary)'){
     this.removeOutlineStyle(input);
     this.isFocus.set(false);
-    if(this.hasError()){
+    if(this.hasError() && this.hasTouched()){
       this.renderer.setStyle(input, 'outline', '2px solid var(--error)');
     }else {
       this.renderer.setStyle(input, 'outline', `1px solid ${color}`);

@@ -1,1 +1,22 @@
-<p>input works!</p>
+<div class="form-control pb-4" [class.field-disabled]="disabled()">
+    <label>{{ label() }}</label>
+    <input
+        [type]="type()"
+        [value]="value()"
+        (input)="value.set($event.target.value)"
+        (blur)="touch.emit()"
+        [placeholder]="placeholder()"
+        statusControl
+        [hasError]="invalid()"
+        [hasTouched]="touched()"
+        [disabled]="disabled()"
+    />
+    
+    @if (invalid() && touched()) {
+        <div class="text-[#C30000] pl-4 pt-1 font-semibold" error-message>
+            @for(error of errors(); track error.kind){
+                <span>{{ error.message }}</span>
+            }
+        </div>
+    }
+</div>

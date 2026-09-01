@@ -1,117 +1,125 @@
-# signal-form
+# Signal Form
 
-Lightweight Angular starter project with small form components and auth features.
+A modern Angular application showcasing signal-based form management, reusable UI components, and a responsive authentication experience.
 
 ## Overview
 
-`signal-form` is an Angular app demonstrating small reusable form components (`input`, `checkbox`, `button`) and a minimal auth feature set (login, register). It includes server and client entry points so it can be run in typical development setups and supports testing for components.
+`signal-form` is an Angular 22 project designed to explore the latest reactive patterns in frontend development. The app demonstrates how to build a clean, validated login form using Angular's signal APIs, custom form controls, and route-based application structure.
 
-## What's Included
+The project focuses on practical UI patterns and developer experience: reusable inputs, validation states, custom directives, and a mobile-responsive layout inspired by e-commerce authentication screens.
 
-- **Core components:** `input`, `checkbox`, `button` (under `src/app/components`).
-- **Features:** `auth` (login, register) and `not-found` route.
-- **Core utilities:** app configuration, routes, and small helper functions (under `src/app/core`).
-- **Server entry points:** `main.server.ts`, `server.ts` for server-side bootstrapping.
-- **Environments:** development and production environment files (`src/environments`).
+## Tech Stack
 
-## Screenshot
+- Angular 22
+- TypeScript
+- Angular Signals
+- Angular Router
+- Angular SSR
+- Tailwind CSS
 
-![Project placeholder image](public/images/1.png)
-![Project placeholder image](public/images/2.png)
-![Project placeholder image](public/images/3.png)
-![Project placeholder image](public/images/4.png)
-![Project placeholder image](public/images/5.png)
+## Key Features
 
-## Project Structure (top-level)
+- Signal-driven form state with `@angular/forms/signals`
+- Reusable `app-input` component with:
+  - email and password variants
+  - validation and error display
+  - disabled state handling
+  - label and placeholder customization
+- Custom `statusControl` directive for styling and accessibility behavior
+- Responsive login layout with hero imagery and desktop/mobile adaptation
+- Route-based navigation for authentication flow
+- Fallback `not-found` screen
+- Server-side rendering support for Angular
 
-- `src/` — application source
-  - `app/` — app modules, components, features
-  - `main.ts` — client bootstrap
-  - `main.server.ts` — server bootstrap
-- `public/` — static assets
-- `angular.json`, `package.json`, `tsconfig.json` — build and tooling
+## Form Behavior
 
-## Scripts
+The login form includes validation for:
 
-- `npm start` — start the development server (see `package.json` scripts).
-- `npm test` — run tests.
+- required email address
+- valid email format
+- required password
 
-Run locally:
+The submit action is only enabled when the form is valid, and the form model is managed through Angular signals using the `form(...)` and `submit(...)` APIs.
+
+## Project Structure
+
+```text
+signal-form/
+├── src/
+│   ├── app/
+│   │   ├── components/
+│   │   │   ├── button/
+│   │   │   ├── checkbox/
+│   │   │   └── input/
+│   │   ├── core/
+│   │   │   ├── directives/
+│   │   │   ├── functions/
+│   │   │   └── models/
+│   │   ├── features/
+│   │   │   ├── auth/
+│   │   │   │   ├── login/
+│   │   │   │   └── register/
+│   │   │   └── not-found/
+│   │   ├── app.config.ts
+│   │   ├── app.routes.ts
+│   │   ├── app.ts
+│   │   └── app.html
+│   ├── environments/
+│   ├── main.ts
+│   ├── main.server.ts
+│   ├── server.ts
+│   └── styles.css
+├── public/
+├── angular.json
+├── package.json
+├── tsconfig.json
+├── README.md
+└── ...
+```
+
+## Getting Started
+
+### Install dependencies
 
 ```bash
 npm install
+```
+
+### Run the development server
+
+```bash
 npm start
 ```
 
-Run tests:
+The app will be available in the browser at:
+
+```text
+http://localhost:4200/
+```
+
+### Build for production
+
+```bash
+npm run build
+```
+
+### Run tests
 
 ```bash
 npm test
 ```
 
-## Contributing
+## Architecture Notes
 
-Contributions welcome. Open an issue or submit a pull request with a clear description and tests if applicable.
+This project is intentionally lightweight and focused on demonstrating clean Angular patterns rather than a full production authentication system. It is particularly useful as a reference for:
 
-## License
+- signal-based reactive form design
+- custom control composition in Angular
+- responsive frontend layout patterns
+- architectural organization for Angular feature modules
 
-Specify a license in `package.json` or add a `LICENSE` file.
-# SignalForm
+## Resources
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.0.8.
-
-## Development server
-
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular: https://angular.dev/
+- Angular CLI: https://angular.dev/tools/cli
+- Angular Signals: https://angular.dev/guide/signals
